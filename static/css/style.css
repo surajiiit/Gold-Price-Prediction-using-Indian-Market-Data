@@ -1,1 +1,206 @@
+:root {
+    --primary-color: #93781f; /* Predict button color */
+    --secondary-color: #ddbf61; /* User input and market data color */
+    --background-color: #f4eacc; /* Background color */
+    --card-background: #ffffff;
+    --text-color: #333333;
+    --positive-color: #4caf50;
+    --negative-color: #f44336;
+    --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Resetting default margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fullscreen video background styling */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2; /* Ensures the video stays behind content */
+    overflow: hidden; /* Prevents scrollbars */
+}
+
+/* Styling the video itself */
+video {
+    width: 100%; /* Makes the video cover the full width */
+    height: 100%; /* Makes the video cover the full height */
+    object-fit: cover; /* Ensures the video fills the screen without distortion */
+    object-position: center center; /* Centers the video within the container */
+}
+
+h1 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem; /* Adjusted font size for better scaling */
+}
+
+.market-data {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.market-card {
+    background-color: var(--secondary-color); /* Updated market card color */
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s ease;
+}
+
+.market-card:hover {
+    transform: translateY(-2px);
+}
+
+.market-card h3 {
+    margin: 0 0 1rem 0;
+    color: var(--primary-color);
+}
+
+.price {
+    font-size: 1.2rem; /* Adjusted font size for better readability */
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.change {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.change.positive {
+    color: var(--positive-color);
+}
+
+.change.negative {
+    color: var(--negative-color);
+}
+
+form {
+    background-color: var(--card-background);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    background-color: var(--secondary-color); /* Updated input field color */
+    color: #333333;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(48, 63, 159, 0.2);
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: #7a6519; /* Darkened shade for hover */
+}
+
+.result {
+    background-color: var(--card-background);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    margin-top: 2rem;
+    text-align: center;
+}
+
+#prediction-value {
+    color: var(--primary-color);
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.error-message {
+    color: var(--negative-color);
+    text-align: center;
+    padding: 1rem;
+    margin-top: 1rem;
+    background-color: rgba(244, 67, 54, 0.1);
+    border-radius: 4px;
+}
+
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .market-data {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem; /* Reduced gap for smaller screens */
+    }
+
+    .market-card {
+        padding: 1rem;
+    }
+
+    form {
+        padding: 1.5rem;
+    }
+
+    input, button {
+        padding: 0.5rem; /* Adjusted padding for smaller screens */
+    }
+}
